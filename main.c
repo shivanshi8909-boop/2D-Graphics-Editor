@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include "shapes.h"
+
+char canvas[ROWS][COLS];
+
+void initializeCanvas()
+{
+    int i, j;
+
+    for(i = 0; i < ROWS; i++)
+    {
+        for(j = 0; j < COLS; j++)
+        {
+            canvas[i][j] = '_';
+        }
+    }
+}
+
+void displayCanvas()
+{
+    int i, j;
+
+    for(i = 0; i < ROWS; i++)
+    {
+        for(j = 0; j < COLS; j++)
+        {
+            printf("%c", canvas[i][j]);
+        }
+
+        printf("\n");
+    }
+}
+
+int main()
+{
+    initializeCanvas();
+
+    printf("===== 2D GRAPHICS EDITOR =====\n\n");
+
+    displayCanvas();
+
+    return 0;
+}
