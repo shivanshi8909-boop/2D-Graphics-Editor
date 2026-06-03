@@ -1,4 +1,5 @@
 #include "shapes.h"
+#include<math.h>
 
 void drawRectangle(char canvas[ROWS][COLS],
                    int x,
@@ -60,5 +61,40 @@ void drawLine(char canvas[ROWS][COLS],
 
         x += xIncrement;
         y += yIncrement;
+    }
+}
+
+void drawTriangle(char canvas[ROWS][COLS],
+                  int x1, int y1,
+                  int x2, int y2,
+                  int x3, int y3)
+{
+    drawLine(canvas, x1, y1, x2, y2);
+    drawLine(canvas, x2, y2, x3, y3);
+    drawLine(canvas, x3, y3, x1, y1);
+}
+
+void drawCircle(char canvas[ROWS][COLS],
+                int centerX,
+                int centerY,
+                int radius)
+{
+    int x, y;
+
+    for(y = 0; y < ROWS; y++)
+    {
+        for(x = 0; x < COLS; x++)
+        {
+            int dx = x - centerX;
+            int dy = y - centerY;
+
+            int distanceSquared = dx * dx + dy * dy;
+            int radiusSquared = radius * radius;
+
+            if(abs(distanceSquared - radiusSquared) <= radius)
+            {
+                canvas[y][x] = '*';
+            }
+        }
     }
 }
