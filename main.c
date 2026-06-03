@@ -36,7 +36,7 @@ int main()
     initializeCanvas();
 
     drawRectangle(canvas, 10, 5, 20, 8);
-    
+    drawLine(canvas, 0, 0, 40, 20);
     printf("===== 2D GRAPHICS EDITOR =====\n\n");
 
     displayCanvas();
