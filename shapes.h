@@ -3,6 +3,27 @@
 
 #define ROWS 25
 #define COLS 80
+#define MAX_SHAPES 100
+
+#define RECTANGLE 1
+#define LINE      2
+#define TRIANGLE  3
+#define CIRCLE    4
+
+typedef struct
+{
+    int id;
+    int type;
+
+    int x1, y1;
+    int x2, y2;
+    int x3, y3;
+
+    int width;
+    int height;
+    int radius;
+
+} Shape;
 
 void drawRectangle(char canvas[ROWS][COLS],int x,int y,int width,int height);
 

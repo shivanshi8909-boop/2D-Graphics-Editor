@@ -2,6 +2,10 @@
 #include "shapes.h"
 
 char canvas[ROWS][COLS];
+Shape shapes[MAX_SHAPES];
+
+int shapeCount = 0;
+int nextId = 1;
 
 void initializeCanvas()
 {
@@ -31,20 +35,182 @@ void displayCanvas()
     }
 }
 
-int main()
+void redrawCanvas()
 {
+    int i;
+
     initializeCanvas();
 
-    drawRectangle(canvas, 10, 5, 20, 8);
-    drawLine(canvas, 0, 0, 40, 20);
-    drawTriangle(canvas,
-             50, 5,
-             70, 15,
-             40, 15);
-    drawCircle(canvas, 60, 18, 5);
-    printf("===== 2D GRAPHICS EDITOR =====\n\n");
+    for(i = 0; i < shapeCount; i++)
+    {
+        if(shapes[i].type == RECTANGLE)
+        {
+            drawRectangle(canvas,
+                          shapes[i].x1,
+                          shapes[i].y1,
+                          shapes[i].width,
+                          shapes[i].height);
+        }
 
-    displayCanvas();
+        if(shapes[i].type == LINE)
+        {
+            drawLine(canvas,
+               shapes[i].x1,
+               shapes[i].y1,
+               shapes[i].x2,
+               shapes[i].y2);
+        }
+       else if(shapes[i].type == TRIANGLE)
+       {
+             drawTriangle(canvas,
+                 shapes[i].x1, shapes[i].y1,
+                 shapes[i].x2, shapes[i].y2,
+                 shapes[i].x3, shapes[i].y3);
+        }
+        else if(shapes[i].type == CIRCLE)
+        {
+             drawCircle(canvas,
+                 shapes[i].x1,
+                 shapes[i].y1,
+                shapes[i].radius);
+        }
+    }
+}
 
-    return 0;
+    int main()
+{
+    int choice;
+
+    while(1)
+    {
+        printf("\n===== 2D GRAPHICS EDITOR =====\n");
+        printf("1. Add Rectangle\n");
+        printf("2. Add Line\n");
+        printf("3. Add Triangle\n");
+        printf("4. Add Circle\n");
+        printf("5. Display Canvas\n");
+        printf("6. Exit\n");
+
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        switch(choice)
+        {
+            case 1:
+                 {
+                  Shape rect;
+
+                  rect.id = nextId++;
+                  rect.type = RECTANGLE;
+
+                  printf("Enter x: ");
+                  scanf("%d", &rect.x1);
+
+                  printf("Enter y: ");
+                  scanf("%d", &rect.y1);
+
+                  printf("Enter width: ");
+                  scanf("%d", &rect.width);
+
+                  printf("Enter height: ");
+                  scanf("%d", &rect.height);
+
+                  shapes[shapeCount++] = rect;
+
+                  printf("Rectangle added. ID = %d\n", rect.id);
+
+                   break;
+                }
+
+            case 2:
+                   
+                  {
+                    Shape line;
+
+                       line.id = nextId++;
+                        line.type = LINE;
+
+                         printf("Enter x1: ");
+                         scanf("%d", &line.x1);
+
+                         printf("Enter y1: ");
+                         scanf("%d", &line.y1);
+
+                         printf("Enter x2: ");
+                         scanf("%d", &line.x2);
+
+                         printf("Enter y2: ");
+                         scanf("%d", &line.y2);
+
+                           shapes[shapeCount++] = line;
+
+                            printf("Line added. ID = %d\n", line.id);
+
+                             break;
+                          }
+            case 3:
+                    {
+                        Shape triangle;
+
+                        triangle.id = nextId++;
+                         triangle.type = TRIANGLE;
+
+                        printf("Enter x1: ");
+                        scanf("%d", &triangle.x1);
+
+                         printf("Enter y1: ");
+                         scanf("%d", &triangle.y1);
+
+                         printf("Enter x2: ");
+                         scanf("%d", &triangle.x2);
+
+                         printf("Enter y2: ");
+                         scanf("%d", &triangle.y2);
+
+                         printf("Enter x3: ");
+                         scanf("%d", &triangle.x3);
+
+                         printf("Enter y3: ");
+                         scanf("%d", &triangle.y3);
+
+                          shapes[shapeCount++] = triangle;
+
+                          printf("Triangle added. ID = %d\n", triangle.id);
+
+                          break;
+                      }
+            case 4:
+                  {
+                    Shape circle;
+
+                     circle.id = nextId++;
+                     circle.type = CIRCLE;
+
+                     printf("Enter center x: ");
+                     scanf("%d", &circle.x1);
+
+                     printf("Enter center y: ");
+                     scanf("%d", &circle.y1);
+
+                     printf("Enter radius: ");
+                     scanf("%d", &circle.radius);
+
+                     shapes[shapeCount++] = circle;
+
+                     printf("Circle added. ID = %d\n", circle.id);
+
+                    break;
+               }
+            case 5:
+                 redrawCanvas();
+                displayCanvas();
+                 break;
+
+            case 6:
+                return 0;
+
+            default:
+                printf("Invalid choice\n");
+        }
+    }
 }
