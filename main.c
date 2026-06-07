@@ -88,8 +88,9 @@ void redrawCanvas()
         printf("2. Add Line\n");
         printf("3. Add Triangle\n");
         printf("4. Add Circle\n");
-        printf("5. Display Canvas\n");
-        printf("6. Exit\n");
+        printf("5. Delete Object\n");
+        printf("6. Display Canvas\n");
+        printf("7. Exit\n");
 
         printf("Enter choice: ");
         scanf("%d", &choice);
@@ -201,12 +202,48 @@ void redrawCanvas()
 
                     break;
                }
+               
             case 5:
+            {
+              int deleteId;
+              int i, found = 0;
+
+              printf("Enter Object ID to delete: ");
+              scanf("%d", &deleteId);
+
+              for(i = 0; i < shapeCount; i++)
+             {
+              if(shapes[i].id == deleteId)
+              {
+               int j;
+
+               for(j = i; j < shapeCount - 1; j++)
+              {
+                shapes[j] = shapes[j + 1];
+              }
+
+              shapeCount--;
+              found = 1;
+
+               printf("Object deleted successfully.\n");
+               break;
+            }
+         }
+
+         if(!found)
+         {
+        printf("Object ID not found.\n");
+         }
+
+         break;
+}
+
+            case 6:
                  redrawCanvas();
                 displayCanvas();
                  break;
 
-            case 6:
+            case 7:
                 return 0;
 
             default:
