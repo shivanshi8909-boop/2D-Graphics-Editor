@@ -60,10 +60,11 @@ int main() {
     printf("2. Add Line\n");
     printf("3. Add Triangle\n");
     printf("4. Add Circle\n");
-    printf("5. Delete Object\n");
-    printf("6. Modify Object\n");
-    printf("7. Display Canvas\n");
-    printf("8. Exit\n");
+    printf("5. List Objects\n");
+    printf("6. Delete Object\n");
+    printf("7. Modify Object\n");
+    printf("8. Display Canvas\n");
+    printf("9. Exit\n");
 
     printf("Enter choice: ");
     scanf("%d", &choice);
@@ -171,8 +172,39 @@ int main() {
 
       break;
     }
-
     case 5: {
+      int i;
+
+      printf("\n===== OBJECT LIST =====\n");
+
+      if (shapeCount == 0) {
+        printf("No objects present.\n");
+      } else {
+        printf("ID\tType\n");
+        printf("--------------------\n");
+
+        for (i = 0; i < shapeCount; i++) {
+          printf("%d\t", shapes[i].id);
+
+          if (shapes[i].type == RECTANGLE)
+            printf("Rectangle");
+
+          else if (shapes[i].type == LINE)
+            printf("Line");
+
+          else if (shapes[i].type == TRIANGLE)
+            printf("Triangle");
+
+          else if (shapes[i].type == CIRCLE)
+            printf("Circle");
+
+          printf("\n");
+        }
+      }
+
+      break;
+    }
+    case 6: {
       int deleteId;
       int i, found = 0;
 
@@ -201,7 +233,7 @@ int main() {
 
       break;
     }
-    case 6: {
+    case 7: {
       int modifyId;
       int i, found = 0;
 
@@ -283,12 +315,12 @@ int main() {
       break;
     }
 
-    case 7:
+    case 8:
       redrawCanvas();
       displayCanvas();
       break;
 
-    case 8:
+    case 9:
       return 0;
 
     default:
