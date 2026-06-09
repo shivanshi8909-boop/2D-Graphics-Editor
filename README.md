@@ -129,6 +129,9 @@ Linux:
 Shivanshi
 
 First Year Engineering Student
+B.tech AI-DS
+R25EH122
+
 
 ## Conclusion
 
