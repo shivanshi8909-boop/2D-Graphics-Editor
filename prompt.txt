@@ -3,7 +3,8 @@ Prompt used for writing the code
 Submit the link to the GitHub repository in Moodle.
 Daily push to GitHub is mandatory. 
 
-Problem Statement: Write a 2d graphics editor using * and _.
+Problem Statement:
+ Write a 2d graphics editor using * and _.
  Write functions to draw a circle, rectangle, line, and triangle.
  You should be able to add objects to the picture, delete objects from the picture, and modify objects in the picture.
  Use a 2d array of characters to store the picture.
