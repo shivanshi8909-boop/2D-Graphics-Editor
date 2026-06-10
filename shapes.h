@@ -1,8 +1,8 @@
 #ifndef SHAPES_H
 #define SHAPES_H
 
-#define ROWS 50
-#define COLS 150
+#define ROWS 40
+#define COLS 90
 #define MAX_SHAPES 100
 
 #define RECTANGLE 1

@@ -1,0 +1,34 @@
+Prompt used for writing the code
+"Create a repository in GitHub. 
+Submit the link to the GitHub repository in Moodle.
+Daily push to GitHub is mandatory. 
+
+Problem Statement: Write a 2d graphics editor using * and _.
+ Write functions to draw a circle, rectangle, line, and triangle.
+ You should be able to add objects to the picture, delete objects from the picture, and modify objects in the picture.
+ Use a 2d array of characters to store the picture.
+ Write a function to display the picture.
+
+
+
+Prompts used for understanding the code
+ 
+Prompt 1.
+Prompt given to understand the file “main.c” it working and to know for what reason was the syntax used.
+" Analyse the main.c file and tell me how is the processes carried on step by step which syntax is used for which"
+"why is nextId++ / shapeCount++ used"
+
+
+Prompt 2.
+Prompt given to understand the file “shapes.h” it working and to know for what reason was the syntax used.
+" Analyse the functions performed in shapes.h file and let me know how is it processed"
+
+Prompt 3.
+Prompt given to understand the file “shapes.c” it working and to know for what reason was the syntax used.
+" Analyse the functions performed in shapes.c file and let me know how is it processed"
+"What is boundary tolerance comparison"
+"How is line drawn explain in steps."
+
+Prompt 4.
+To understand the complete flow of the programme  that is the starting point to the end point.
+"How does programme run when executed"
